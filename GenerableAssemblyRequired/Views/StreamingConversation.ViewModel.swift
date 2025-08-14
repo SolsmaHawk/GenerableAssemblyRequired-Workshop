@@ -44,7 +44,8 @@ extension StreamingConversationView {
             }
             do {
                 let stream: LanguageModelSession.ResponseStream<GuidedConversation> =
-                try await modelsManager.generate(prompt: WorkshopConstants.prompt)
+                try await modelsManager.generate(prompt: WorkshopConstants.prompt,
+                                                 generationOptions: .init(sampling: WorkshopConstants.samplingMode))
                 
                 for try await snapshot in stream {
                     withAnimation(.smooth) {

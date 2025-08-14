@@ -85,10 +85,10 @@ public final class FoundationModelsManager {
         return session.streamResponse(to: prompt, options: GenerationOptions(sampling: samplingMode))
     }
 
-    public func generate<T: Generable>(prompt: String) async throws -> LanguageModelSession.ResponseStream<T> {
+    public func generate<T: Generable>(prompt: String, generationOptions: GenerationOptions) async throws -> LanguageModelSession.ResponseStream<T> {
         try checkAvailability()
         try checkIfModelIsBusy()
-        return session.streamResponse(to: prompt, generating: T.self, options: GenerationOptions(sampling: .greedy))
+        return session.streamResponse(to: prompt, generating: T.self, options: generationOptions)
     }
 
     public func generate<T: Generable>(_ type: T.Type, from prompt: String) async throws -> T {
