@@ -1,8 +1,33 @@
+//
+//  GuidedConversation.swift
+//  ConversationManager
+//
+//  Created by John Solsma on 7/7/25.
+//
+
 import Foundation
 import FoundationModels
 
 @Generable
 struct Personality: Codable, CustomStringConvertible {
+
+    // MARK: ┌─────────────── PART 1 - OPTIONAL ─────────────────────────┐
+    // MARK: │ Personality Generable Model                               │
+    // MARK: └───────────────────────────────────────────────────────────┘
+    //
+    // 📝 Workshop Notes:
+    // • This is an OPTIONAL task in Part 1.
+    // • If you’d like, you can modify or extend the Personality model
+    //   by adding new fields, tweaking existing ones, or adjusting
+    //   the @Guide descriptions and constraints.
+    // • IMPORTANT: If you change this schema, you will also need to map
+    //   those fields into the `GenerablePersonalityDisplayable` protocol
+    //   so that the SwiftUI UI layer can render your changes.
+    // • The provided extension of `Personality.PartiallyGenerated` already
+    //   maps existing fields. You can expand or adjust it to align with
+    //   your new schema.
+    // • This separation ensures: Generable model = data generation,
+    //   Displayable protocol = data presentation in UI.
 
     var name: String
     @Guide(description: "Use the ImageLookupTool to fetch a url")
