@@ -7,6 +7,14 @@
 
 import FoundationModels
 
+
+/*
+   ,--.
+  ( ^o^)  *Get creative!*
+  /)   )
+  ^^  ^^
+*/
+
 enum WorkshopConstants {
     // Instructions are passed into the model alongside your prompt.
     // They act as high-level guidance for how the model should behave
@@ -24,10 +32,13 @@ enum WorkshopConstants {
     // By enabling or disabling tools, you can change what information
     // the model has access to and how it enriches conversations.
     // Experiment with different tool combinations to explore possibilities.
+    //
+    // ✏️ NOTE: We’ll come back and EDIT this section in Part 2 of the workshop
+    // when we focus on tool-calling. For now, leave it as-is or explore lightly.
     static let tools: [any Tool] = [/*ImageLookupTool(), DetailedSummaryTool()*/]
     
     // Sampling mode determines *how* the model generates responses.
-    // Greedy is more deterministic, while other modes like temperature
+    // Greedy is deterministic, while other modes like temperature
     // add variability. Tuning this changes the "feel" of the conversation.
     // Try different modes to balance between consistency and creativity.
     static let samplingMode: GenerationOptions.SamplingMode = .greedy

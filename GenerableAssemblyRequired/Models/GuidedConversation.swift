@@ -25,12 +25,15 @@ struct GuidedConversation: Codable {
     */
     // TODO(Workshop):
     // 🦉 START HERE — Build out your @Generable conversation model 🦉
+    // MARK: ┌─────────────── PART 1 ───────────────┐
+    // MARK: │ Generable Model Setup                │
+    // MARK: └──────────────────────────────────────┘
     // It’s up to you to decide the overall structure:
     // - How many stages or turns the conversation should have.
     // - How many exchanges occur in total.
     //
     // Remember: Generable models are nestable.
-    // You can create a separate @Generable type (e.g., ConversationExchange)
+    // You can create a separate @Generable type (e.g., ConversationExchange 😉)
     // to represent each turn, and then reference it here as a property
     // or array.
     //
@@ -43,6 +46,20 @@ struct GuidedConversation: Codable {
     // Tip: You can visualize your model output by running the project
     // and viewing the transcript. Later in the workshop, you’ll embed
     // this model output in the UI by conforming to the provided protocol.
+    //
+    // 🚨 Important: This project is set up so you only need to update or
+    // extend the Generable models (like this one) and adjust constants
+    // in WorkshopConstants. All of the SwiftUI code is already configured
+    // to display `GuidedConversationDisplayable` and
+    // `GenerablePersonalityDisplayable`. No need to edit anything else!
+    //
+    // ✅ Next step (required): Populate the protocol stubs.
+    //    - Conform `GuidedConversation.PartiallyGenerated` to
+    //      `GuidedConversationDisplayable` and map your generated fields
+    //      into the displayable properties.
+    // ✅ Optional stretch: If you include richer personality details,
+    //    also conform `Personality.PartiallyGenerated` to
+    //    `GenerablePersonalityDisplayable` so the UI can render them.
 }
 
 
@@ -51,27 +68,58 @@ struct DisplayableConversationExchange {
     let message: String?
 }
 
-// MARK: - Protocol students will satisfy
-
-/// Implement this on `GuidedConversation.PartiallyGenerated` to expose only the
-/// UI-ready pieces, without leaking the entire generated structure.
-///
-/// Hints:
-/// - `Personality.PartiallyGenerated` exists because `@Generable` fields are optional
-///   until the model fills them in.
-/// - You likely want to linearize your generated turns into simple
-///   `(speakerName, message)` values the UI can render.
+// Implement on `GuidedConversation.PartiallyGenerated`.
+// Map your generated participants and turns into a UI-ready shape.
+// The exact mapping depends on your schema.
 protocol GuidedConversationDisplayable {
     var participants: [Personality.PartiallyGenerated?] { get }
 
     /// Flattened conversation in the order it should be shown.
-    /// Tip: Create this from greeting(s) + subsequent array (when present).
+    /// Tip: Build this from whatever stages/turns you modeled.
     var conversationExchanges: [DisplayableConversationExchange] { get }
 }
 
 // MARK: - GuidedConversationDisplayable
 
 extension GuidedConversation.PartiallyGenerated: GuidedConversationDisplayable {
+    
+    // MARK: ┌─────────────── PART 2 ────────────────────┐
+    // MARK: │ GuidedConversationDisplayable Conformance │
+    // MARK: └───────────────────────────────────────────┘
+    //
+    // 📝 Your task here is to *map your Generable model schema* into this
+    // display protocol. The SwiftUI views in the project are already wired
+    // to consume `GuidedConversationDisplayable` — so whatever you return
+    // here is what shows up in the UI.
+    //
+    // In other words:
+    // - Take the properties you defined in your `GuidedConversation` model.
+    // - Transform them into `DisplayableConversationExchange` values.
+    // - Return them in the correct order (order matters for context).
+    //
+    // Think of this as the bridge between your generated data
+    // and the user interface. If nothing is mapped here, nothing will appear.
+    //
+    var conversationExchanges: [DisplayableConversationExchange] {
+        var exchanges: [DisplayableConversationExchange] = []
+        
+        // Example of mapping a single turn:
+        // exchanges.append(
+        //     DisplayableConversationExchange(
+        //         speakerName: greeting.speakerName,
+        //         message: greeting.message
+        //     )
+        // )
+        
+        // TODO(Workshop): Map your own conversation stages/exchanges here
+        // based on the schema you designed in GuidedConversation.
+        
+        return exchanges
+    }
+    
+    // MARK: ┌──────── PART 2 Continued (OPTIONAL) ────┐
+    // MARK: │ The More the Merrier                    │
+    // MARK: └─────────────────────────────────────────┘
 
     var participants: [Personality.PartiallyGenerated?] {
         // Optional task: Instead of hardcoding two participants,
@@ -79,32 +127,6 @@ extension GuidedConversation.PartiallyGenerated: GuidedConversationDisplayable {
         // This would require adjusting the @Generable properties in
         // GuidedConversation to handle a list of Personality objects.
         [participantOne, participantTwo]
-    }
-
-    var conversationExchanges: [DisplayableConversationExchange] {
-        var exchanges: [DisplayableConversationExchange] = []
-
-        // TODO(Workshop):
-        // Think about what other properties a guided conversation might need.
-        // These could describe different stages or turns in the conversation,
-        // and might involve single exchanges or lists of exchanges.
-        //
-        // Remember: Generable models can be nested, so your properties could
-        // reference other @Generable types (like a ConversationExchange struct)
-        // to model more complex, structured parts of the conversation.
-        //
-        // You can also explore constraints, such as limiting the number of turns
-        // or specifying formatting rules for certain fields.
-        //
-        // Example:
-        // exchanges.append(
-        //     DisplayableConversationExchange(
-        //         speakerName: greeting.speakerName,
-        //         message: greeting.message
-        //     )
-        // )
-
-        return exchanges
     }
 }
 
