@@ -33,8 +33,24 @@ enum WorkshopConstants {
     // the model has access to and how it enriches conversations.
     // Experiment with different tool combinations to explore possibilities.
     //
-    // ✏️ NOTE: We’ll come back and EDIT this section in Part 2 of the workshop
-    // when we focus on tool-calling. For now, leave it as-is or explore lightly.
+    // ✏️ NOTE: We’ll come back and EDIT this section in second half of the workshop
+    // MARK: ┌─────────────── PART 3 ────────────────────┐
+    // MARK: │ Tool-Calling Setup                        │
+    // MARK: └───────────────────────────────────────────┘
+    //
+    // 🛠 In this section you’ll start working with tools.
+    //
+    // • Step 1: Remove the comments around the initialized tools in this array
+    //   so they are actually passed to the model.
+    // • Step 2: Begin with `ImageLookupTool` — implement this tool first to
+    //   practice wiring up tool-calling. It provides image URLs for the
+    //   participants in your conversation.
+    // • Later, you can explore `DetailedSummaryTool` or add your own tools
+    //   to extend functionality.
+    //
+    // Remember: tools are how you give the model capabilities beyond text
+    // generation. Adding and enabling them here changes what the model can do.
+    //
     static let tools: [any Tool] = [/*ImageLookupTool(), DetailedSummaryTool()*/]
     
     // Sampling mode determines *how* the model generates responses.
