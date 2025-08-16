@@ -8,26 +8,35 @@
 import Foundation
 import FoundationModels
 
-
 struct DetailedSummaryTool: Tool {
     typealias Output = [String]
     
     let name: String = "DetailedSummaryTool"
     let description: String = "Use this only to provide a detailed summary of the personality"
 
+    // MARK: ┌─────────────── PART 3 - OPTIONAL ─────────────────────────┐
+    // MARK: │ Tool-Calling Extension - DetailedSummaryTool              │
+    // MARK: └───────────────────────────────────────────────────────────┘
+    //
+    // 📝 Workshop Notes:
+    // • This tool is optional — only implement if you want to go further
+    //   with tool-calling after finishing `ImageLookupTool`.
+    // • Purpose: Fetch a richer text description for each participant
+    //   (using the Wikipedia summary `extract` field).
+    // • Notice: The Output here is still `[String]`, but you could choose
+    //   to return something more structured if you wanted.
+    // • The Arguments struct demonstrates how to guide the model to provide
+    //   multiple participant names as input.
+    // • Try experimenting with when the model chooses to call this tool
+    //   and how its output affects your personality display.
+    //
     func call(arguments: Arguments) async throws -> Output {
         var conversantWikipediaDescriptions: [String] = []
-        for name in arguments.names {
-            let result = try await fetchWikipediaSummary(for: name)
-            conversantWikipediaDescriptions.append(result.extract)
-        }
         return conversantWikipediaDescriptions
     }
     
     @Generable
     struct Arguments {
-        @Guide(description: "The full names of all the participants in the conversation")
-        var names: [String]
     }
 
     private func fetchWikipediaSummary(for title: String) async throws -> WikipediaSummary {
@@ -40,5 +49,4 @@ struct DetailedSummaryTool: Tool {
         }
         return summary
     }
-
 }
