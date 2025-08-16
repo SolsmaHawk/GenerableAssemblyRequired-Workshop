@@ -19,12 +19,12 @@ struct GuidedConversation: Codable {
 
     /*
        ,--.
-      ( o_o)   *Welcome to Generable Assembly Required!*
+      ( o_o)   *Welcome to Generable Assembly Required! - GenerOwl*
       /)   )
       ^^  ^^
     */
     // TODO(Workshop):
-    // Start here — build out your @Generable conversation model.
+    // 🦉 START HERE — Build out your @Generable conversation model 🦉
     // It’s up to you to decide the overall structure:
     // - How many stages or turns the conversation should have.
     // - How many exchanges occur in total.
@@ -62,7 +62,6 @@ struct DisplayableConversationExchange {
 /// - You likely want to linearize your generated turns into simple
 ///   `(speakerName, message)` values the UI can render.
 protocol GuidedConversationDisplayable {
-    /// Exactly two participants. Order matters for your UI (P1, P2).
     var participants: [Personality.PartiallyGenerated?] { get }
 
     /// Flattened conversation in the order it should be shown.
@@ -75,7 +74,6 @@ protocol GuidedConversationDisplayable {
 extension GuidedConversation.PartiallyGenerated: GuidedConversationDisplayable {
 
     var participants: [Personality.PartiallyGenerated?] {
-        // Already available from the partially generated struct.
         // Optional task: Instead of hardcoding two participants,
         // consider extending your model to support `n` participants.
         // This would require adjusting the @Generable properties in
@@ -97,6 +95,14 @@ extension GuidedConversation.PartiallyGenerated: GuidedConversationDisplayable {
         //
         // You can also explore constraints, such as limiting the number of turns
         // or specifying formatting rules for certain fields.
+        //
+        // Example:
+        // exchanges.append(
+        //     DisplayableConversationExchange(
+        //         speakerName: greeting.speakerName,
+        //         message: greeting.message
+        //     )
+        // )
 
         return exchanges
     }
