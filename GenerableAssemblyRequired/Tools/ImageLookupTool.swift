@@ -15,6 +15,10 @@ struct ImageLookupTool: Tool {
     let name: String = "ImageLookupTool"
     let description: String = "Use this to get the image urls for the conversation participants"
 
+    // MARK: ┌─────────────── PART 3 ────────────────────────┐
+    // MARK: │ Tool-Calling Initilization - ImageLookupTool  │
+    // MARK: └───────────────────────────────────────────────┘
+
     func call(arguments: Arguments) async throws -> Output {
         var conversantUrlStrings: [String] = []
         for name in arguments.names {

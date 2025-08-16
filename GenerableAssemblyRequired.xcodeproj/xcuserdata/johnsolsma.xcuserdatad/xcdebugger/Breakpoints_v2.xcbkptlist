@@ -206,8 +206,8 @@
             filePath = "GenerableAssemblyRequired/Tools/ImageLookupTool.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
             landmarkName = "Arguments"
             landmarkType = "14">
          </BreakpointContent>
@@ -222,10 +222,10 @@
             filePath = "GenerableAssemblyRequired/Tools/ImageLookupTool.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
-            landmarkName = "fetchWikipediaSummary(for:)"
-            landmarkType = "7">
+            startingLineNumber = "35"
+            endingLineNumber = "35"
+            landmarkName = "names"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
