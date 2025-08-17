@@ -34,9 +34,9 @@ struct Personality: Codable, CustomStringConvertible {
     var imageLookupToolValue: String
     @Guide(description: "Only use the DetailedSummaryTool here")
     var detailedSummary: String
-    @Guide(description: "Uniquely identifying traits for this personality.", .count(3...8))
+    @Guide(description: "Uniquely identifying traits for this personality.", .count(3...4))
     var traits: [LabledPersonalityTrait]
-    @Guide(description: "Uniquely identifying traits for this personality that can be measured on a scale of 1 to 10 with 1 being the least and 10 being the most.", .count(3...8))
+    @Guide(description: "Uniquely identifying traits for this personality that can be measured on a scale of 1 to 10 with 1 being the least and 10 being the most.", .count(3...4))
     var measuredTraits: [BoundedPersonalityTrait]
     var characterType: CharacterType
     var tone: Tone

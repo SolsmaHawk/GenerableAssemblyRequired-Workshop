@@ -36,7 +36,6 @@ extension FoundationModelsManager {
                     case .text(let text):
                         addOrUpdate(entry: DatedTranscriptEntry(generationId: text.id, entry: text.content, transcriptEntry: transcriptEntry), parentEntry: transcriptEntry)
                     case .structure(let structure):
-                        dump(structure)
                       transcriptEntriesFrom(generatedContent: structure.content, for: transcriptEntry).forEach { addOrUpdate(entry: $0, parentEntry: transcriptEntry) }
                     @unknown default:
                         break
