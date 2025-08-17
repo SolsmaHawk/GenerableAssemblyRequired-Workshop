@@ -12,7 +12,7 @@ struct DetailedSummaryTool: Tool {
     typealias Output = [String]
     
     let name: String = "DetailedSummaryTool"
-    let description: String = "Use this only to provide a detailed summary of the personality"
+    let description: String = "Use this once"
 
     // MARK: ┌─────────────── PART 3 - OPTIONAL ─────────────────────────┐
     // MARK: │ Tool-Calling Extension - DetailedSummaryTool              │
@@ -32,11 +32,17 @@ struct DetailedSummaryTool: Tool {
     //
     func call(arguments: Arguments) async throws -> Output {
         var conversantWikipediaDescriptions: [String] = []
+        for name in arguments.names {
+            let wikipediaSummary = try await fetchWikipediaSummary(for: name)
+            conversantWikipediaDescriptions.append(wikipediaSummary.extract)
+        }
         return conversantWikipediaDescriptions
     }
     
     @Generable
     struct Arguments {
+        @Guide(description: "The names of the participants")
+        let names: [String]
     }
 
     private func fetchWikipediaSummary(for title: String) async throws -> WikipediaSummary {

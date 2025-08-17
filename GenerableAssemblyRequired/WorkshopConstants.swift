@@ -20,13 +20,13 @@ enum WorkshopConstants {
     // They act as high-level guidance for how the model should behave
     // and how it might use available tools.
     // Experiment by refining these to see how small changes affect output.
-    static let instructions: String = "Use the image lookup tool to get image urls. Groot should only every reply with `I am Groot`"
+    static let instructions: String = "Use the image lookup tool to get image urls. Use the DetailedSummaryTool only once."
     
     // The core prompt that sets the stage for your generated conversation.
     // This is where you define the participants and scenario.
     // Try swapping in different personalities, mixing historical figures,
     // fictional characters, or even contrasting archetypes. Have fun!
-    static let prompt: String = "A conversation between Obi Wan Kenobi, George Washington, Groot and Tony Stark"
+    static let prompt: String = "A conversation between Obi Wan Kenobi, George Washington and Tony Stark"
     
     // Tools extend what the model can do beyond pure text generation.
     // By enabling or disabling tools, you can change what information
@@ -51,7 +51,7 @@ enum WorkshopConstants {
     // Remember: tools are how you give the model capabilities beyond text
     // generation. Adding and enabling them here changes what the model can do.
     //
-    static let tools: [any Tool] = [ImageLookupTool()]
+    static let tools: [any Tool] = [ImageLookupTool(), DetailedSummaryTool()]
     
     // Sampling mode determines *how* the model generates responses.
     // Greedy is deterministic, while other modes like temperature
