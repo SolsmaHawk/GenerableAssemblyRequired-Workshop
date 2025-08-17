@@ -49,6 +49,12 @@ struct ImageLookupTool: Tool {
     //
     func call(arguments: Arguments) async throws -> Output {
         var conversantUrlStrings: [String] = []
+        for name in arguments.names {
+            let wikiSummary = try await fetchWikipediaSummary(for: name)
+            if let imageUrl = wikiSummary.thumbnail?.source {
+                conversantUrlStrings.append(imageUrl.description)
+            }
+        }
         // TODO(Workshop): Implement logic here to use your Arguments,
         // call out to fetchWikipediaSummary, extract image URLs,
         // and append them into `conversantUrlStrings`.
@@ -60,6 +66,8 @@ struct ImageLookupTool: Tool {
         // TODO(Workshop): Define what inputs your tool needs.
         // Example: participant names to look up images for.
         // Use @Guide annotations to tell the model exactly what values to provide.
+        @Guide(description: "The names of the participants in the conversation")
+        let names: [String]
     }
 
     private func fetchWikipediaSummary(for title: String) async throws -> WikipediaSummary {

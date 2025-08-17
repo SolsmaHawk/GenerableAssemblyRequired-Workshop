@@ -12,10 +12,12 @@ import FoundationModels
 
 @Generable
 struct GuidedConversation: Codable {
-    @Guide(description: "The first participant in the conversation")
-    let participantOne: Personality
-    @Guide(description: "The second participant in the conversation")
-    let participantTwo: Personality
+    @Guide(description: "The participants in the conversation")
+    let participantsInConversation: [Personality]
+    @Guide(description: "The first participant greets the other startled by the absurdity of the entire situation")
+    let startledGreeting: ConversationExchange
+    @Guide(description: "The simulated conversation between the participants. Each entry represents one turn in the conversation", .count(10))
+    let guidedConversationExchanges: [ConversationExchange]
 
     /*
        ,--.
@@ -62,6 +64,13 @@ struct GuidedConversation: Codable {
     //    `GenerablePersonalityDisplayable` so the UI can render them.
 }
 
+@Generable
+struct ConversationExchange: Codable {
+    @Guide(description: "The name of the personality speaking")
+    let speakerName: String
+    @Guide(description: "The message being delivered in the conversation")
+    let message: String
+}
 
 struct DisplayableConversationExchange {
     let speakerName: String?
@@ -103,6 +112,14 @@ extension GuidedConversation.PartiallyGenerated: GuidedConversationDisplayable {
     var conversationExchanges: [DisplayableConversationExchange] {
         var exchanges: [DisplayableConversationExchange] = []
         
+        if let startledGreeting = startledGreeting {
+            exchanges.append(
+                DisplayableConversationExchange(
+                    speakerName: startledGreeting.speakerName,
+                    message: startledGreeting.message
+                )
+            )
+        }
         // Example of mapping a single turn:
         // exchanges.append(
         //     DisplayableConversationExchange(
@@ -114,7 +131,11 @@ extension GuidedConversation.PartiallyGenerated: GuidedConversationDisplayable {
         // TODO(Workshop): Map your own conversation stages/exchanges here
         // based on the schema you designed in GuidedConversation.
         
+        exchanges.append(contentsOf: (guidedConversationExchanges ?? []).compactMap({ conversationExchange in
+                .init(speakerName: conversationExchange.speakerName, message: conversationExchange.message)
+        }))
         return exchanges
+            
     }
     
     // MARK: ┌──────── PART 2 Continued (OPTIONAL) ────┐
@@ -126,7 +147,7 @@ extension GuidedConversation.PartiallyGenerated: GuidedConversationDisplayable {
         // consider extending your model to support `n` participants.
         // This would require adjusting the @Generable properties in
         // GuidedConversation to handle a list of Personality objects.
-        [participantOne, participantTwo]
+        participantsInConversation ?? []
     }
 }
 
