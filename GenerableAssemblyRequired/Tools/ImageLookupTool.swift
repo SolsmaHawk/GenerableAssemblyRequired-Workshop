@@ -49,16 +49,21 @@ struct ImageLookupTool: Tool {
     //
     func call(arguments: Arguments) async throws -> Output {
         var conversantUrlStrings: [String] = []
-        for name in arguments.names {
-            let wikiSummary = try await fetchWikipediaSummary(for: name)
-            if let imageUrl = wikiSummary.thumbnail?.source {
-                conversantUrlStrings.append(imageUrl.description)
+        do {
+            for name in arguments.names {
+                let wikiSummary = try await fetchWikipediaSummary(for: name)
+                if let imageUrl = wikiSummary.thumbnail?.source {
+                    conversantUrlStrings.append(imageUrl.description)
+                }
             }
+            // TODO(Workshop): Implement logic here to use your Arguments,
+            // call out to fetchWikipediaSummary, extract image URLs,
+            // and append them into `conversantUrlStrings`.
+            return conversantUrlStrings
+        } catch let error {
+            dump(error)
+            return []
         }
-        // TODO(Workshop): Implement logic here to use your Arguments,
-        // call out to fetchWikipediaSummary, extract image URLs,
-        // and append them into `conversantUrlStrings`.
-        return conversantUrlStrings
     }
     
     @Generable

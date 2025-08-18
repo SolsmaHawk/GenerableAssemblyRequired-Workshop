@@ -32,11 +32,16 @@ struct DetailedSummaryTool: Tool {
     //
     func call(arguments: Arguments) async throws -> Output {
         var conversantWikipediaDescriptions: [String] = []
-        for name in arguments.names {
-            let wikipediaSummary = try await fetchWikipediaSummary(for: name)
-            conversantWikipediaDescriptions.append(wikipediaSummary.extract)
+        do {
+            for name in arguments.names {
+                let wikipediaSummary = try await fetchWikipediaSummary(for: name)
+                conversantWikipediaDescriptions.append(wikipediaSummary.extract)
+            }
+            return conversantWikipediaDescriptions
+        } catch let error {
+            dump(error)
+            return []
         }
-        return conversantWikipediaDescriptions
     }
     
     @Generable
