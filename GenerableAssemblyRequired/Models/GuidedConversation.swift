@@ -8,7 +8,7 @@
 import Foundation
 import FoundationModels
 
-// MARK: - Model scaffolding students will extend
+// MARK: - Model scaffolding participants will extend
 
 @Generable
 struct GuidedConversation: Codable {
