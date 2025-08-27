@@ -8,6 +8,7 @@
 
 /* Begin PBXFileReference section */
 		3129687C2E3DA42200B7DEE6 /* GenerableAssemblyRequired.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GenerableAssemblyRequired.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3151474B2E5E8EDA00D2B7FC /* Workshop_Part1_Instructions.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = Workshop_Part1_Instructions.pdf; path = GenerableAssemblyRequired/Workshop_Part1_Instructions.pdf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -32,6 +33,7 @@
 		312968732E3DA42200B7DEE6 = {
 			isa = PBXGroup;
 			children = (
+				3151474B2E5E8EDA00D2B7FC /* Workshop_Part1_Instructions.pdf */,
 				3129687E2E3DA42200B7DEE6 /* GenerableAssemblyRequired */,
 				3129687D2E3DA42200B7DEE6 /* Products */,
 			);
