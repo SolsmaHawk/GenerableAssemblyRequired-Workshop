@@ -6,9 +6,14 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		3151474D2E5FE33200D2B7FC /* Workshop_Part2_Instructions.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 3151474C2E5FE33200D2B7FC /* Workshop_Part2_Instructions.pdf */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		3129687C2E3DA42200B7DEE6 /* GenerableAssemblyRequired.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GenerableAssemblyRequired.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3151474B2E5E8EDA00D2B7FC /* Workshop_Part1_Instructions.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = Workshop_Part1_Instructions.pdf; path = GenerableAssemblyRequired/Workshop_Part1_Instructions.pdf; sourceTree = "<group>"; };
+		3151474C2E5FE33200D2B7FC /* Workshop_Part2_Instructions.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Workshop_Part2_Instructions.pdf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -34,6 +39,7 @@
 			isa = PBXGroup;
 			children = (
 				3151474B2E5E8EDA00D2B7FC /* Workshop_Part1_Instructions.pdf */,
+				3151474C2E5FE33200D2B7FC /* Workshop_Part2_Instructions.pdf */,
 				3129687E2E3DA42200B7DEE6 /* GenerableAssemblyRequired */,
 				3129687D2E3DA42200B7DEE6 /* Products */,
 			);
@@ -111,6 +117,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3151474D2E5FE33200D2B7FC /* Workshop_Part2_Instructions.pdf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
