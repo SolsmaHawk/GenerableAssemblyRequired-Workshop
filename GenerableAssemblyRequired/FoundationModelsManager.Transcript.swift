@@ -1,5 +1,5 @@
 //
-//  Untitled.swift
+//  FoundationModelsManager.Transcript.swift
 //  GenerableAssemblyRequired
 //
 //  Created by John Solsma on 8/4/25.
