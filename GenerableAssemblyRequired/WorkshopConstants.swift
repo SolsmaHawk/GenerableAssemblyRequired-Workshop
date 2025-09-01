@@ -26,7 +26,7 @@ enum WorkshopConstants {
     // This is where you define the participants and scenario.
     // Try swapping in different personalities, mixing historical figures,
     // fictional characters, or even contrasting archetypes. Have fun!
-    static let prompt: String = "A conversation between Obi Wan Kenobi, Charles Barkley and Tony Stark"
+    static let prompt: String = "A conversation between Julius Caeser, Gordon Ramsay and Tony Stark"
     
     // Tools extend what the model can do beyond pure text generation.
     // By enabling or disabling tools, you can change what information
